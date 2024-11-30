@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :twittex, Twittex.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "randy",
+  password: "",
   hostname: "localhost",
   database: "twittex_dev",
   stacktrace: true,
