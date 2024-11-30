@@ -45,6 +45,31 @@ defmodule Twittex.Accounts do
   end
 
   @doc """
+  Gets a user by email and password.
+
+  ## Examples
+
+      iex> get_user_by_email_and_password("foo@example.com", "correct_password")
+      %User{}
+
+      iex> get_user_by_email_and_password("foo@example.com", "invalid_password")
+      nil
+
+  """
+  def get_user_by_login_information(username_or_email, password)
+      when is_binary(username_or_email) and is_binary(password) do
+    
+    query = from u in User, 
+      where: u.username == ^username_or_email
+      or u.email == ^username_or_email
+    user = Repo.one(query)
+    |> IO.inspect()
+    if User.valid_password?(user, password) do
+      user
+    end
+  end
+
+  @doc """
   Gets a single user.
 
   Raises `Ecto.NoResultsError` if the User does not exist.
