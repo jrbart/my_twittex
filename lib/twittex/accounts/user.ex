@@ -38,11 +38,21 @@ defmodule Twittex.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :username, :password])
     |> validate_email(opts)
+    |> validate_username()
     |> validate_password(opts)
   end
 
+  defp validate_username(changeset) do
+    changeset
+    |> validate_required([:username])
+    |> validate_format(:username, ~r/^[A-Za-z0-9_]+/, message: "can only contain alphanumeric chararcters and underscore")
+    |> validate_length(:username, max: 20)
+    |> unsafe_validate_unique(:username, Twittex.Repo)
+    |> unique_constraint(:username)
+  end
+  
   defp validate_email(changeset, opts) do
     changeset
     |> validate_required([:email])
