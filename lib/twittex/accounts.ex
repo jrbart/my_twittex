@@ -26,6 +26,10 @@ defmodule Twittex.Accounts do
     Repo.get_by(User, email: email)
   end
 
+  def get_user_by_username!(username) do
+    Repo.get_by!(User, username: username)
+  end
+
   @doc """
   Gets a user by email and password.
 

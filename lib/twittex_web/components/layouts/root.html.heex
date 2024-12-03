@@ -11,48 +11,27 @@
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>
-  <body class="bg-white">
-    <ul class="relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end">
-      <%= if @current_user do %>
-        <li class="text-[0.8125rem] leading-6 text-zinc-900">
-          <%= @current_user.email %>
-        </li>
-        <li>
-          <.link
-            href={~p"/users/settings"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Settings
+  <body class="bg-gray-100 antialiased">
+    <div class="container mx-auto px-3 sm:px-5 md:px-8 lg:px-10 xl:px-12">
+      <header class="py-5 px-5 flex flex-col sm:flex-row justify-between items-center bg-white border-b border-gray-200">
+        <div class="flex items-center mb-3 sm:mb-0">
+          <.link href={~p"/"} class="flex">
+            <.icon name="hero-beaker" class="text-orange-500 h-8 w-8 mr-2" />
+            <h1 class="text-2xl font-bold text-gray-700">Twittex</h1>
           </.link>
-        </li>
-        <li>
-          <.link
-            href={~p"/users/log_out"}
-            method="delete"
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Log out
-          </.link>
-        </li>
-      <% else %>
-        <li>
-          <.link
-            href={~p"/users/register"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Register
-          </.link>
-        </li>
-        <li>
-          <.link
-            href={~p"/users/log_in"}
-            class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
-          >
-            Log in
-          </.link>
-        </li>
-      <% end %>
-    </ul>
-    <%= @inner_content %>
+        </div>
+        <nav class="flex flex-col sm:flex-row">
+          <%= if @current_user do %>
+            <.navbar_link href={~p"/#{@current_user.username}"} text="My profile" />
+            <.navbar_link href={~p"/users/settings"} text="Settings" />
+            <.navbar_link href={~p"/users/log_out"}  text="Log out" method="delete"/>
+          <% else %>
+            <.navbar_link href={~p"/users/register"} text="Register" />
+            <.navbar_link href={~p"/users/log_in"} text="Log in" />
+          <% end %>
+        </nav>
+      </header>
+      <%= @inner_content %>
+    </div>
   </body>
 </html>
