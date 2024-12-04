@@ -22,7 +22,7 @@
         </div>
         <nav class="flex flex-col sm:flex-row">
           <%= if @current_user do %>
-            <.navbar_link href={~p"/#{@current_user.username}"} text="My profile" />
+            <.navbar_link href={~p"/#{@current_user}"} text="My profile" />
             <.navbar_link href={~p"/users/settings"} text="Settings" />
             <.navbar_link href={~p"/users/log_out"}  text="Log out" method="delete"/>
           <% else %>

@@ -2,6 +2,7 @@ defmodule Twittex.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Phoenix.Param, key: :username}
   schema "users" do
     field :email, :string
     field :username, :string
