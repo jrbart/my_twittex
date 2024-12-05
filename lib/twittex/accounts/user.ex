@@ -11,6 +11,8 @@ defmodule Twittex.Accounts.User do
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
 
+    has_many :tweeks, Twittex.Feed.Tweek
+
     timestamps(type: :utc_datetime)
   end
 
