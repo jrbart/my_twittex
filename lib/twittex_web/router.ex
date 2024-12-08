@@ -18,10 +18,14 @@ defmodule TwittexWeb.Router do
   end
 
   scope "/", TwittexWeb do
+    pipe_through [:browser, :require_confirmed_user]
+    live "/:username", ProfileLive
+  end
+
+  scope "/", TwittexWeb do
     pipe_through :browser
 
     get "/", PageController, :home
-    live "/live/:username", ProfileLive
   end
 
   # Other scopes may use custom stacks.

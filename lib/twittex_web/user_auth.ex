@@ -213,6 +213,19 @@ defmodule TwittexWeb.UserAuth do
     end
   end
 
+  def require_confirmed_user(conn, _) do
+    current_user = conn.assigns.current_user
+
+    if current_user && !is_nil(current_user.confirmed_at) do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You must confirm your email address to access this page.")
+      |> redirect(to: ~p"/users/confirm")
+      |> halt()
+    end
+  end
+
   defp put_token_in_session(conn, token) do
     conn
     |> put_session(:user_token, token)

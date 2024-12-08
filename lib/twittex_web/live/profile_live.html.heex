@@ -1,4 +1,10 @@
 <div class="bg-white p-5 rounded-lg shadow border-b border-gray-200 px-5 py-5">
+  <div :if={@user == @current_user}>
+    <.form for={@form} phx-submit="save">
+      <.input type="textarea" field={@form[:content]}>Say something here</.input>
+      <button>Save</button>
+    </.form>
+  </div>
   <div class="flex items-center">
     <img src="/images/default_avatar.png" class="h-20 w-20 rounded" alt="Avatar" />
     <div class="ml-6">

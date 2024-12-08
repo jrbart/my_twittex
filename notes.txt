@@ -1,0 +1,17 @@
+Neel Vinoth
+8:40 AM
+1) Get Tweek changeset in the Feed Context
+Neel Vinoth
+8:41 AM
+2) On Profile page, load the empty Tweek changeset to generate a HTML
+Neel Vinoth
+8:43 AM
+3) Create a form template to type tweek and submit it
+Neel Vinoth
+8:45 AM
+4) Limit the tweek submisson feature to the current logged in user
+5) on_mount
+Neel Vinoth
+8:46 AM
+use it from user_auth
+ptp-asqb-zew

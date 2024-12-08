@@ -19,4 +19,8 @@ defmodule Twittex.Feed do
     |> Tweek.changeset(attrs)
     |> Repo.insert
   end
+
+  def change_tweek(%Tweek{} = tweek, attrs \\ %{}) do
+    Tweek.changeset(tweek, attrs)
+  end
 end
