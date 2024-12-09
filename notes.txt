@@ -15,3 +15,31 @@ Neel Vinoth
 8:46 AM
 use it from user_auth
 ptp-asqb-zew
+
+
+Tweek schema change:
+Adding validation in the schema changeset for content length of max 256 characters
+Template changes:
+Form field is enhanced with phx- attributes for validation and submission
+Button is updated with new attribute to prevent duplicate submission and look for correct type
+LV module changes:
+Add handle function for  submission and validation event
+handle submission logic / 1. event 2. params 3. socket
+    submit the tweek for a user
+    look at the error message and extract the interested params
+    get the current user from socket assigns
+    use context function to create tweek
+        handle success case
+            Prepend the tweek to list of tweeks available in socket assigns
+            create new intake form for content (to html)
+        handle error case
+            error and changeset
+            display the user with changeset message in html form
+        return with status tuple with noreply and success(socket)/ error(socket)
+handle validate logic/3
+    validate the tweek content using context function
+    return the result to html form
+    assign results in the form key in html format
+Troubleshoot the error
+    include the user details after the success tweek creation
+    hint - user loaded after insertion
