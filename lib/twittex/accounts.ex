@@ -379,4 +379,10 @@ defmodule Twittex.Accounts do
       {:error, :user, changeset, _} -> {:error, changeset}
     end
   end
+
+  def save_user_avatar!(%User{} = user, attrs) do
+  user
+  |> User.avatar_changeset(attrs)
+  |> Repo.update!()
+  end
 end

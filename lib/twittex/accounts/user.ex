@@ -10,6 +10,7 @@ defmodule Twittex.Accounts.User do
     field :hashed_password, :string, redact: true
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
+    field :avatar, :string
 
     has_many :tweeks, Twittex.Feed.Tweek
 
@@ -171,5 +172,11 @@ defmodule Twittex.Accounts.User do
     else
       add_error(changeset, :current_password, "is not valid")
     end
+  end
+
+  def avatar_changeset(changeset, params) do
+    changeset
+    |> cast(%{avatar: params}, [:avatar])
+    |> validate_required([:avatar])
   end
 end

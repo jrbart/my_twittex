@@ -1,18 +1,22 @@
-<.header class="text-center">
+<.header class="text-center my-10">
   Account Settings
   <:subtitle>Manage your account email address and password settings</:subtitle>
 </.header>
 
-<div class="space-y-12 divide-y">
-  <div>
-    <.simple_form :let={f} for={@email_changeset} action={~p"/users/settings"} id="update_email">
+<div class="space-y-12">
+  <div class="space-y-12">
+    <.simple_form :let={f} for={@email_changeset} 
+      action={~p"/users/settings"} id="update_email"
+      class="py-5 px-8 bg-white rounded">
       <.error :if={@email_changeset.action}>
         Oops, something went wrong! Please check the errors below.
       </.error>
 
       <input type="hidden" name="action" value="update_email" />
 
-      <.input field={f[:email]} type="email" label="Email" required />
+      <.input field={f[:email]} type="email" label="Email" required 
+        class="py-5 px-8 bg-white rounded"
+      />
       <.input
         field={f[:current_password]}
         name="current_password"
@@ -20,6 +24,7 @@
         label="Current Password"
         required
         id="current_password_for_email"
+        class="py-5 px-8 bg-white rounded"
       />
       <:actions>
         <.button phx-disable-with="Changing...">Change Email</.button>
@@ -32,6 +37,7 @@
       for={@password_changeset}
       action={~p"/users/settings"}
       id="update_password"
+      class="py-5 px-8 bg-white rounded"
     >
       <.error :if={@password_changeset.action}>
         Oops, something went wrong! Please check the errors below.
@@ -59,5 +65,12 @@
         <.button phx-disable-with="Changing...">Change Password</.button>
       </:actions>
     </.simple_form>
+  </div>
+
+  <div>
+    <div class="py-5 px-8 bg-white rounded">
+      <h3 class="font-bold mb-2">Change avatar</h3>
+      <%= live_render @conn, TwittexWeb.AvatarUploadLive %>
+    </div>
   </div>
 </div>

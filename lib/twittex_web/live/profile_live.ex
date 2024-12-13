@@ -4,6 +4,7 @@ defmodule TwittexWeb.ProfileLive do
   alias Twittex.Accounts
   alias Twittex.Feed
 
+  import TwittexWeb.AvatarHelper
   import TwittexWeb.FeedComponents
 
   on_mount({TwittexWeb.UserAuth,:mount_current_user})

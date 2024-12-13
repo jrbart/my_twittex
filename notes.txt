@@ -43,3 +43,32 @@ handle validate logic/3
 Troubleshoot the error
     include the user details after the success tweek creation
     hint - user loaded after insertion
+
+
+File Uploads:
+Mapping the image to Profile:
+# Placeholder to store the images in the server
+* The images are not required to be stored in repo. So ignore the folder from committing
+Whitelist the namespace/placeholder in the application
+Add/map Avatars to users
+- Generate migration
+- Update the user schema
+- Changeset to validate avatar for user
+- Accounts context to support updating user avatars
+
+
+Adding Avatar section to Settings page
+    - Create a new LV template for Avatar Upload live
+    - Updating socket with current user
+    - define accept specification(2Mb, jpg/ jpeg/png, max entries of 1) for avatar image when mounting
+    - form with validate and save
+        - render reactive elements including preview
+        - upload file feature(live_file_upload)
+    - add handle event to support validate
+    - add handle event to save the file upload using consume uploaded entries function
+Update setting page to render avatar template (live render)
+Use error handing function component in the Avatar template (upload error - Core Components (reference))
+    .error - refer Core Components
+Reference:
+https://hexdocs.pm/phoenix_live_view/uploads.html (edited) 
+
