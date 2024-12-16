@@ -72,3 +72,34 @@ Use error handing function component in the Avatar template (upload error - Core
 Reference:
 https://hexdocs.pm/phoenix_live_view/uploads.html (edited) 
 
+FOLLOWS
+Create data
+Include faker dependency
+Make seed file
+Add some users
+To register user, we need to provide username/ email id /password
+Use Account.register_user API
+Update the avatar for the users
+https://phoenixonrails.com/images/avatars/mark.png
+https://phoenixonrails.com/images/avatars/bill.png
+https://phoenixonrails.com/images/avatars/elon.png
+https://phoenixonrails.com/images/avatars/jeff.png
+Insert 100 random tweeks
+Fake content
+random user picked from added users
+Inserted at timeline for each tweek in random time is last 30 days
+Run the seed
+The ‘Follows’ schema
+Feed.Follow / follows / follower_id and followed_id
+Migration
+Updated with change in on_delete and null false
+Add unique index with including follower and followed id
+Migrate
+Schema
+Follow schema
+Add relationship with user schema
+Include proper cast and unique constraints
+User schema
+Add relationship with Follow schema
+Updating the Feed context
+

@@ -21,6 +21,13 @@
       </p>
     </div>
   </div>
+  
+  <.follow_button
+   user_id={@user.id}
+   followed?={@followed?}
+   :if={@current_user && @current_user.id != @user.id}
+  />
+
 </div>
 
 <div class="mt-3">

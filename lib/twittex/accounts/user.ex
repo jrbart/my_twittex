@@ -14,6 +14,11 @@ defmodule Twittex.Accounts.User do
 
     has_many :tweeks, Twittex.Feed.Tweek
 
+    has_many :follows_as_follower, Twittex.Feed.Follow, foreign_key: :follower_id
+    has_many :follows_as_followed, Twittex.Feed.Follow, foreign_key: :followed_id
+    has_many :followers, through: [:follows_as_followed, :follower]
+    has_many :followed, through: [:follows_as_follower, :followed]
+
     timestamps(type: :utc_datetime)
   end
 

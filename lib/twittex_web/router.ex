@@ -1,4 +1,6 @@
 defmodule TwittexWeb.Router do
+  alias TwittexWeb.FeedLive
+  alias TwittexWeb.ProfileLive
   use TwittexWeb, :router
 
   import TwittexWeb.UserAuth
@@ -17,15 +19,11 @@ defmodule TwittexWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", TwittexWeb do
-    pipe_through [:browser, :require_confirmed_user]
-    live "/:username", ProfileLive
-  end
-
-  scope "/", TwittexWeb do
+  scope "/" do 
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", FeedLive
+    live "/:username", ProfileLive
   end
 
   # Other scopes may use custom stacks.

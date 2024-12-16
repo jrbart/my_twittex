@@ -2,7 +2,6 @@ defmodule TwittexWeb.AvatarUploadLive do
   use TwittexWeb, :live_view
 
   alias Twittex.Accounts
-  alias Twittex.Feed
 
   on_mount({TwittexWeb.UserAuth,:mount_current_user})
 
